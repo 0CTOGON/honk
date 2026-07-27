@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <color android:color="#f4f1df"/>
+    </item>
+
+    <item>
+        <drawable android:drawable="@drawable/splash_icon"/>
+    </item>
+
+</layer-list>

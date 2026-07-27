@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>HONK</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f1df;
+            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+
+            margin: 0;
+            padding: 10px;
+
+            height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 700px;
+
+            max-height: 90vh;
+
+            border: 3px solid black;
+            background: white;
+
+            padding: 20px;
+
+            box-shadow: 8px 8px 0 black;
+
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: clamp(40px, 12vw, 60px);
+            margin: 0;
+            letter-spacing: -3px;
+        }
+
+        .tagline {
+            font-style: italic;
+        }
+
+        .goose {
+            font-size: 100px;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+
+            font-size: 25px;
+            padding: 10px 20px;
+
+            background: yellow;
+            border: 3px solid black;
+
+            cursor: pointer;
+
+            box-shadow: 4px 4px 0 black;
+        }
+
+        button:hover {
+            background: orange;
+        }
+
+        button:active {
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        .counter {
+            margin-top: 20px;
+
+            border-top: 2px dashed black;
+
+            padding-top: 15px;
+        }
+
+        .message {
+            margin-top: 20px;
+
+            min-height: 25px;
+
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 40px;
+
+            font-size: 12px;
+
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>HONK.COM</h1>
+
+    <p class="tagline">
+        The world's most important (and only) app about making a goose noise.
+    </p>
+
+    <p>
+        Welcome to HONK.<br>
+        Press the button. You know what happens.
+    </p>
+
+    <button onclick="honk()">
+        HONK
+    </button>
+
+    <div class="counter">
+        Total honks: <span id="count">0</span>
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <footer>
+        © HONK 2026<br>
+        Powered by questionable amounts of goose energy.
+    </footer>
+
+</div>
+
+
+<script>
+
+let honks = 0;
+
+const honkSound = new Audio("honk.mp3");
+
+
+function honk() {
+
+    honks++;
+
+    document.getElementById("count").textContent = honks;
+
+
+    honkSound.currentTime = 0;
+
+    honkSound.play().catch(error => {
+        console.log("Honk failed:", error);
+    });
+	
+	if (window.Android) {
+        Android.vibrate();
+    }
+
+    const messages = [
+        "HONK.",
+        "A powerful honk has been released.",
+        "The goose approves.",
+        "The neighbours are concerned. (It's a good thing.)",
+        "Maximum honk achieved.",
+        "The goose has been summoned.",
+        "Why.",
+        "Life... is meaningless. (apart from geese.)"
+    ];
+
+
+    document.getElementById("message").textContent =
+        messages[Math.floor(Math.random() * messages.length)];
+
+}
+
+</script>
+
+</body>
+</html>
