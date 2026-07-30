@@ -108,83 +108,17 @@
         }
     </style>
 </head>
-
 <body>
-
-<div class="box">
-
-    <h1>HONK</h1>
-
-    <p class="tagline">
-        The world's most important (and only) app about making a goose noise.
-    </p>
-
-    <p>
-        Welcome to HONK.<br>
-        Press the button. You know what happens.
-    </p>
-
-    <button onclick="honk()">
-        HONK
-    </button>
-
-    <div class="counter">
-        Total honks: <span id="count">0</span>
+    <div class="box">
+        <h1>About</h1>
+        <p>Humor. It brings us together. Nice.<br>Honks. They bring humor and concern the neighbors. Even better!<br>Android. It's open <s>source</s> sauce. Nobody really cares about that though, except developers.</p>
+        <p>Yes, we (hang on, we? it was one person who made this) actually made an app that makes goose honks. Don't ask why.</p>
+        <p>I made this because:
+            <ul>
+                <li>I was bored.</li>
+                <li>It was funny.</li>
+            </ul><br>
+            Jeez. If you want to drop me an eMail, it's <a href="mailto:blythlk@protonmail.com">blythlk@protonmail.com</a>. Hit me up! Oh, yeah, my GitHub's <a href="https://gitub.com/0ctogon">here too.</a>
+        </p>
+        </p>
     </div>
-
-    <div class="message" id="message"></div>
-
-    <footer>
-        © HONK 2026<br>
-        Powered by questionable amounts of goose energy. ¯\_(ツ)_/¯
-        <a href="about.html">Why?</a>
-    </footer>
-
-</div>
-
-
-<script>
-
-let honks = 0;
-
-const honkSound = new Audio("honk.mp3");
-
-
-function honk() {
-
-    honks++;
-
-    document.getElementById("count").textContent = honks;
-
-
-    honkSound.currentTime = 0;
-
-    honkSound.play().catch(error => {
-        console.log("Honk failed:", error);
-    });
-	
-	if (window.Android) {
-        Android.vibrate();
-    }
-
-    const messages = [
-        "HONK.",
-        "A powerful honk has been released.",
-        "The goose approves.",
-        "The neighbours are concerned. (It's a good thing.)",
-        "Maximum honk achieved.",
-        "The goose has been summoned.",
-        "Why.",
-        "Life... is meaningless. (apart from geese.)"
-    ];
-
-
-    document.getElementById("message").textContent =
-        messages[Math.floor(Math.random() * messages.length)];
-
-}
-
-</script>
-
-</body>
-</html>
